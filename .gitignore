@@ -1,1 +1,9 @@
 efs/
+rme03/
+rme04/
+data_exploration.ipynb
+.vscode/launch.json
+YOLO_model/YOLO_notebook.ipynb
+__pycache__/YOLO_Preprocess.cpython-312.pyc
+data_exploration.ipynb
+YOLO_model/yolo11m.pt
