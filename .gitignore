@@ -2,3 +2,5 @@
 __pycache__/
 runs/
 exploration/
+exploartion/data_exploration.ipynb
+exploartion/preprocessing_experiment.ipynb
