@@ -1,37 +1,35 @@
 import sys
 import json
-from train import train_model
-from eval import evaluate_model
-from convert import convert_data
+from YOLO import YOLO_Machina
+
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python main.py <command> <input_file> [output_file]")
+    if len(sys.argv) < 1:
+        print("Usage: python main.py <command>")
         sys.exit(1)
 
     command = sys.argv[1]
-    input_file = sys.argv[2]
-    output_file = sys.argv[3] if len(sys.argv) > 3 else "output.json"
+    model = sys.argv[2]
+    secondary = sys.argv[3]
 
-    # Read input data
-    with open(input_file, "r") as f:
-        data = json.load(f)
-
+    Yolo = YOLO_Machina("/app/data", model_size=model)
     if command == "train":
-        result = train_model(data)
+        if len(sys.argv) > 3:
+            epochs = int(secondary)
+        else:
+            epochs = 10
+        result = Yolo.train(epochs=int(epochs))
+        print("Training complete!")
     elif command == "eval":
-        result = evaluate_model(data)
+        print(f"Model location: {secondary}")
+        result = Yolo.evaluate(secondary)
+        print("Evaluation complete!")
     elif command == "convert":
-        result = convert_data(data)
+        result = Yolo.convert_coco_to_yolo()
+        print("Conversion complete!")
     else:
         print("Invalid command. Use 'train', 'eval', or 'convert'.")
         sys.exit(1)
-
-    # Write output to file
-    with open(output_file, "w") as f:
-        json.dump(result, f)
-
-    print(f"Output saved to {output_file}")
 
 if __name__ == "__main__":
     main()
