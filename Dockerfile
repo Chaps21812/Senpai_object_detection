@@ -1,6 +1,6 @@
 # Start from a clean Ubuntu base
 # FROM ubuntu:22.04 
-FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 # Set noninteractive mode to prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 # Install dependencies
@@ -15,7 +15,7 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86
     && dpkg -i cuda-keyring_1.1-1_all.deb \
     && apt-get update
 # Install CUDA Toolkit (Replace with desired version)
-RUN apt-get install -y cuda-toolkit-11-7
+RUN apt-get install -y cuda-toolkit-12-2
 # Set environment variables
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"
