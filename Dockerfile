@@ -27,13 +27,12 @@ COPY . .
 
 # Install Python and pip
 RUN apt update && apt install -y python3 python3-venv python3-pip
+RUN apt-get update && apt-get install -y libgl1
 RUN python3 -m venv /opt/venv
 RUN /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
 ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install opencv-python-headless
-
-RUN python3
-RUN apt-get update && apt-get install -y libgl1
+RUN pip install jupyter
 
 # Set the entry point
 # ENTRYPOINT ["python3", "/app/YOLO_model/main.py"]
