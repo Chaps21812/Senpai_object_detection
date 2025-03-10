@@ -2,3 +2,6 @@
 __pycache__/
 runs/
 exploration/
+YOLO_model/dvclive/
+YOLO_model/dvc.yaml
+.dvc/

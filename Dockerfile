@@ -2,7 +2,7 @@
 # FROM ubuntu:22.04 
 FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 # Set noninteractive mode to prevent interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
+# ENV DEBIAN_FRONTEND=noninteractive
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     wget \
@@ -36,7 +36,7 @@ RUN python3
 RUN apt-get update && apt-get install -y libgl1
 
 # Set the entry point
-ENTRYPOINT ["python3", "/app/YOLO_model/main.py"]
+# ENTRYPOINT ["python3", "/app/YOLO_model/main.py"]
 
 
 # FROM python:3.12.2
