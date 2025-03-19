@@ -9,11 +9,11 @@ import yaml
 
 class YOLO_Machina():
     def __init__(self, data_path:str, model_size:str="m"):
-        if model_size == "n": self.model = YOLO("yolo11n.pt").to('cuda')
-        if model_size == "s": self.model = YOLO("yolo11s.pt").to('cuda')
-        if model_size == "m": self.model = YOLO("yolo11m.pt").to('cuda')
-        if model_size == "l": self.model = YOLO("yolo11l.pt").to('cuda')
-        if model_size == "x": self.model = YOLO("yolo11x.pt").to('cuda')
+        if model_size == "n": self.model = YOLO("yolo11n.pt")
+        if model_size == "s": self.model = YOLO("yolo11s.pt")
+        if model_size == "m": self.model = YOLO("yolo11m.pt")
+        if model_size == "l": self.model = YOLO("yolo11l.pt")
+        if model_size == "x": self.model = YOLO("yolo11x.pt")
         self.device = next(self.model.model.parameters()).device
 
         #create train/test/eval paths for data
@@ -67,7 +67,7 @@ class YOLO_Machina():
         self.model.save(self.model_path+"/model.pt")
 
     def evaluate(self, model_path):
-        self.model = YOLO(model_path).to('cuda')
+        self.model = YOLO(model_path)
         self.device = next(self.model.model.parameters()).device
     
         path = self.eval_path+"/images"
